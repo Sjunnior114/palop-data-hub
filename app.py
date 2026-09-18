@@ -73,7 +73,19 @@ st.dataframe(
     use_container_width=True,
     hide_index=True
 )
+# Gráfico de população
+st.header("📊 População dos PALOP")
 
+grafico = dados.sort_values(
+    "populacao",
+    ascending=False
+)
+
+st.bar_chart(
+    grafico,
+    x="pais",
+    y="populacao"
+)
 st.markdown("---")
 
 st.info(
