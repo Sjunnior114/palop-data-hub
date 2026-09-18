@@ -20,6 +20,8 @@ st.markdown("---")
 
 # Carregar dados
 dados = pd.read_csv("data/populacao.csv")
+# Carregar histórico de população
+historico = pd.read_csv("data/populacao_historica.csv")
 
 # Países
 st.header("Países")
@@ -86,6 +88,16 @@ st.bar_chart(
     x="pais",
     y="populacao"
 )
+# Evolução histórica da população
+st.header("📈 Evolução da população")
+
+serie_historica = historico.pivot(
+    index="ano",
+    columns="pais",
+    values="populacao"
+)
+
+st.line_chart(serie_historica)
 st.markdown("---")
 
 st.info(
