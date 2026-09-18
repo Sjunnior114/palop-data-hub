@@ -98,6 +98,20 @@ serie_historica = historico.pivot(
 )
 
 st.line_chart(serie_historica)
+st.subheader("🔎 Analisar um país")
+
+pais_selecionado = st.selectbox(
+    "Escolha um país:",
+    historico["pais"].unique()
+)
+
+dados_pais = historico[
+    historico["pais"] == pais_selecionado
+].set_index("ano")
+
+st.line_chart(
+    dados_pais["populacao"]
+)
 st.markdown("---")
 
 st.info(
